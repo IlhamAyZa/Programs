@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Ex3Main {
     
+    // Reverce of bits
+    
     public static void main(String[] args) {
         Scanner ans = new Scanner(System.in);
 
@@ -23,7 +25,7 @@ public class Ex3Main {
             reverse <<= 1;
  
             if ((int)(number & 1) == 1){
-                // reverce = reverce ^ 1; // or
+                // reverce = reverce ^ 1; // xor
                 reverse ^= 1;
             }
  

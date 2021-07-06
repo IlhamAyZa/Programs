@@ -18,11 +18,17 @@ public class Ex2Main_v2 {
 
     public static int swapBits(int number, int position1, int position2, int strOfMove) {
         int shift1, shift2, value1, value2;
-        while (strOfMove --> 0) {
+        while (strOfMove-- > 0) {
 
-            shift1 = 1 << position1;
+            System.out.println(number);
 
-            shift2 = 1 << position2;
+            shift1 = 1 << position1;  //1001 >> 0010
+
+            System.out.println(shift1);
+
+            shift2 = 1 << position2;  //1001 >> 
+
+            System.out.println(shift2);
 
             value1 = ((number & shift1));
             value2 = ((number & shift2));
@@ -41,6 +47,9 @@ public class Ex2Main_v2 {
                     number = number | shift1;
                 }
             }
+
+            System.out.println(number);
+
             position1++;
             position2++;
         }
