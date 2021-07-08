@@ -8,7 +8,7 @@ public class Ex2Main_v2 {
         Scanner ans = new Scanner(System.in);
 
         int number = ans.nextInt();
-        int pos1 = ans.nextInt();
+        int pos1 = ans.nextInt();  
         int pos2 = ans.nextInt();
         int strOfMove = ans.nextInt();
 
@@ -26,7 +26,7 @@ public class Ex2Main_v2 {
 
             System.out.println(shift1);
 
-            shift2 = 1 << position2;  //1001 >> 
+            shift2 = 1 << position2;  //
 
             System.out.println(shift2);
 
