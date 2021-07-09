@@ -18,28 +18,35 @@ public class Ex7Main {
     
     public static String getRoots(int a , int b, int c){
         
-        float discriminant = (b * b) - (4 * a * c)  ;
-        
-        if (discriminant == 0) {
-            // one root
-                        
-            float root = (- b) / (2 * a);
+        if ( a == 0 ){
+            float root = - c / b ;
             
-            return "There are only one root for the following quadratic equation: " + root ;
+            return "This is not quadratic equation. There is only one root for this equation: " + root ;
         }
+        else{        
+            float discriminant = (b * b) - (4 * a * c)  ;
         
-        else if (discriminant > 0){
-            // two roots
+            if (discriminant == 0) {
+                // one root
                         
-            double root1 = (- b + Math.sqrt(discriminant)) / (2 * a);
-            double root2 = (- b - Math.sqrt(discriminant)) / (2 * a);
+                float root = (- b) / (2 * a);
             
-            return "There are two roots for the following quadratic equation: " + root1 + " and "+ root2;
-        }
+                return "There are only one root for the following quadratic equation: " + root ;
+            }
         
-        else{
-            // no roots
-            return "There are no roots for such quadratic equarion";
+            else if (discriminant > 0){
+                // two roots
+                        
+                double root1 = (- b + Math.sqrt(discriminant)) / (2 * a);
+                double root2 = (- b - Math.sqrt(discriminant)) / (2 * a);
+                
+                return "There are two roots for the following quadratic equation: " + root1 + " and "+ root2;
+            }
+        
+            else{
+                // no roots
+                return "There are no roots for such quadratic equarion";
+            }
         }
     }
     
