@@ -14,6 +14,8 @@ public class Ex8Main {
             anArrayList.add(new Random().nextInt(100));
         }
         
+        Collections.sort(anArrayList);
+        
         System.out.println(anArrayList);
     }
 }
