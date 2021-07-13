@@ -6,25 +6,61 @@ public class Ex8Main {
 
     public static void main(String[] args) {
 
-        int[] anArray = new int[20];
+        int[] anArray = new int[100];
+        
+        int[] anArray1 = new int[100];
+        int[] anArray2 = new int[100];
+        int[] anArray3 = new int[100];
+        int[] anArray4 = new int[100];
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 100; i++) {
 
             anArray[i] = new Random().nextInt(100);
         }
 
-        anArray = sortedIntArray(anArray);
+        Date time1 = new Date();
 
-        for (int i = 0; i < 20; i++) {
+        anArray1 = sortedIntArrayBubble(anArray);
+
+        Date time2 = new Date();
+
+        System.out.println("Time for bubble sort: " + (time2.getTime() - time1.getTime()));
+
+        Date time3 = new Date();
+
+        anArray2 = sortedIntArraySection(anArray);
+
+        Date time4 = new Date();
+
+        System.out.println("Time for selection sort: " + (time4.getTime() - time3.getTime()));
+
+        Date time5 = new Date();
+
+        anArray3 = sortedIntArrayInsertion(anArray);
+
+        Date time6 = new Date();
+
+        System.out.println("Time for insertion sort: " + (time6.getTime() - time5.getTime()));
+
+        Date time7 = new Date();
+
+        anArray4 = sortedIntArrayMerge(anArray);
+
+        Date time8 = new Date();
+
+        System.out.println("Time for merge sort: " + (time8.getTime() - time7.getTime()));
+
+        for (int i = 0; i < 100; i++) {
 
             System.out.print(anArray[i] + " ");
+            
+            if ( i > 1 && i % 25 == 0){
+                System.out.println("\n");
+            }
         }
     }
 
-    public static int[] sortedIntArray(int[] arr) {
-        //Arrays.sort(arr);
-
-        //Bubble
+    public static int[] sortedIntArrayBubble(int[] arr) {
         Boolean unswapped = true;
 
         while (unswapped) {
@@ -41,77 +77,71 @@ public class Ex8Main {
                 }
             }
         }
+        return arr;
+    }
 
+    public static int[] sortedIntArraySection(int[] arr) {
 
-        /*
-        QuickSort 
-        
-        void merge(int Arr[], int start, int mid, int end) {
-
-	int temp[] = new int[end - start + 1];
-
-	int i = start, j = mid+1, k = 0;
-
-	while(i <= mid && j <= end) {
-		if(Arr[i] <= Arr[j]) {
-			temp[k] = Arr[i];
-			k += 1; i += 1;
-		}
-		else {
-			temp[k] = Arr[j];
-			k += 1; j += 1;
-		}
-	}
-
-	while(i <= mid) {
-		temp[k] = Arr[i];
-		k += 1; i += 1;
-	}
-
-	while(j <= end) {
-		temp[k] = Arr[j];
-		k += 1; j += 1;
-	}
-
-	for(i = start; i <= end; i += 1) {
-		Arr[i] = temp[i - start]
-            }
-        }
-
-
-        void mergeSort(int Arr[], int start, int end) {
-
-        if(start < end) {
-		int mid = (start + end) / 2;
-		mergeSort(Arr, start, mid);
-		mergeSort(Arr, mid+1, end);
-		merge(Arr, start, mid, end);
-            }
-        }
-         */
-        
-        /*
-        void sort(int arr[])
-        {
         int n = arr.length;
-        for (int i=1; i<n; ++i)
-        {
-            int key = arr[i];
-            int j = i-1;
-            
-            while (j>=0 && arr[j] > key)
-            {
-                arr[j+1] = arr[j];
-                j = j-1;
+
+        for (int i = 0; i < n - 1; i++) {
+            int min_idx = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[min_idx]) {
+                    min_idx = j;
+                }
             }
-            arr[j+1] = key;
+
+            int temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
         }
+        return arr;
+    }
+
+    public static int[] sortedIntArrayInsertion(int[] arr) {
+        int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            int key = arr[i];
+            int j = i - 1;
+
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
         }
-         */
-        
-        /*
-        
-        */
+
+        return arr;
+    }
+
+    public static int[] sortedIntArrayMerge(int[] arr) {
+        int n = arr.length;
+
+        int output[] = new int[n];
+
+        int count[] = new int[256];
+        for (int i = 0; i < 256; ++i) {
+            count[i] = 0;
+        }
+
+        for (int i = 0; i < n; ++i) {
+            ++count[arr[i]];
+        }
+
+        for (int i = 1; i <= 255; ++i) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = n - 1; i >= 0; i--) {
+            output[count[arr[i]] - 1] = arr[i];
+            --count[arr[i]];
+        }
+
+        for (int i = 0; i < n; ++i) {
+            arr[i] = output[i];
+        }
+
         return arr;
     }
 }
