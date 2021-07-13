@@ -6,14 +6,14 @@ public class Ex8Main {
 
     public static void main(String[] args) {
 
-        int[] anArray = new int[100];
+        int[] anArray = new int[10000];
         
-        int[] anArray1 = new int[100];
-        int[] anArray2 = new int[100];
-        int[] anArray3 = new int[100];
-        int[] anArray4 = new int[100];
+        int[] anArray1 = new int[10000];
+        int[] anArray2 = new int[10000];
+        int[] anArray3 = new int[10000];
+        int[] anArray4 = new int[10000];
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10000; i++) {
 
             anArray[i] = new Random().nextInt(100);
         }
@@ -50,11 +50,11 @@ public class Ex8Main {
 
         System.out.println("Time for merge sort: " + (time8.getTime() - time7.getTime()));
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10000; i++) {
 
             System.out.print(anArray[i] + " ");
             
-            if ( i > 1 && i % 25 == 0){
+            if ( i > 1 && i % 50 == 0){
                 System.out.println("\n");
             }
         }
