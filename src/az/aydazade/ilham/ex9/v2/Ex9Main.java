@@ -5,29 +5,43 @@ import java.util.*;
 public class Ex9Main {
 
     public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        
+        System.out.println("Please write size of matrix (first row, then column): ");
+        int rowSize = scn.nextInt();
+        int columnSize = scn.nextInt();
 
+        int[][] aMatrix = new int[rowSize][columnSize];
+
+        for (int i = 0; i < rowSize; i++) {
+
+            for (int j = 0; j < columnSize; j++) {
+                aMatrix[i][j] = (int) (Math.random() * 100);
+            }
+        }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        System.out.println("This is full matrix: ");
+        for (int i = 0; i < rowSize; i++) {
+            System.out.print("  | ");
+            for (int j = 0; j < columnSize; j++) {
+                System.out.print(aMatrix[i][j] + " ");
+            }
+            System.out.print(" | \n");
+        }
+
+        System.out.println("Please write id of space: ");
+
+        System.out.print("Please write the row: ");
+        int row = scn.nextInt();
+
+        System.out.print("Please write the column: ");
+        int column = scn.nextInt();
+        System.out.println("");
+
+        System.out.println("Content in this place is following: " + aMatrix[row-1][column-1]);
+
     }
 }
-
-
-
 
 /*
         Map<Integer, Integer> coordinates = new LinkedHashMap<>();
@@ -64,4 +78,4 @@ public class Ex9Main {
         
         System.out.println(aMatrix);
         
-    */
+ */
