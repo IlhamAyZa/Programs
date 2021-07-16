@@ -1,4 +1,4 @@
-package az.aydazade.ilham.ex9;
+package az.aydazade.ilham.ex9.v1;
 
 public class MatrixItem {
     private int columnID;
