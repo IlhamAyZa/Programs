@@ -6,18 +6,19 @@ public class Ex8Main {
 
     public static void main(String[] args) {
 
-        int[] anArray = new int[10000];
-        
-        int[] anArray1 = new int[10000];
-        int[] anArray2 = new int[10000];
-        int[] anArray3 = new int[10000];
-        int[] anArray4 = new int[10000];
+        int[] anArray = new int[100000];
 
-        for (int i = 0; i < 10000; i++) {
+        int[] anArray1 = new int[100000];
+        int[] anArray2 = new int[100000];
+        int[] anArray3 = new int[100000];
+        int[] anArray4 = new int[100000];
+
+        for (int i = 0; i < 100000; i++) {
 
             anArray[i] = new Random().nextInt(100);
         }
 
+        // Bubble
         Date time1 = new Date();
 
         anArray1 = sortedIntArrayBubble(anArray);
@@ -26,6 +27,7 @@ public class Ex8Main {
 
         System.out.println("Time for bubble sort: " + (time2.getTime() - time1.getTime()));
 
+        // Section
         Date time3 = new Date();
 
         anArray2 = sortedIntArraySection(anArray);
@@ -34,6 +36,7 @@ public class Ex8Main {
 
         System.out.println("Time for selection sort: " + (time4.getTime() - time3.getTime()));
 
+        // Insertion
         Date time5 = new Date();
 
         anArray3 = sortedIntArrayInsertion(anArray);
@@ -42,6 +45,7 @@ public class Ex8Main {
 
         System.out.println("Time for insertion sort: " + (time6.getTime() - time5.getTime()));
 
+        // Merge
         Date time7 = new Date();
 
         anArray4 = sortedIntArrayMerge(anArray);
@@ -50,11 +54,25 @@ public class Ex8Main {
 
         System.out.println("Time for merge sort: " + (time8.getTime() - time7.getTime()));
 
-        for (int i = 0; i < 10000; i++) {
+        // method sort
+        Date time9 = new Date();
+
+        Arrays.sort(anArray);
+
+        Date time10 = new Date();
+
+        System.out.println("Time for method sort: " + (time10.getTime() - time9.getTime()));
+
+        /////////////////////
+        if (anArray == anArray1 && anArray1 == anArray2 && anArray2 == anArray3 && anArray3 == anArray4){
+            System.out.println(" Sorting works equally with every method! ");
+        }
+        
+        for (int i = 0; i < 100000; i += 50) {
 
             System.out.print(anArray[i] + " ");
-            
-            if ( i > 1 && i % 50 == 0){
+
+            if (i > 1 && i % 10000 == 0) {
                 System.out.println("\n");
             }
         }
