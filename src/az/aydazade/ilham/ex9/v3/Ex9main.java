@@ -14,18 +14,17 @@ public class Ex9main {
 
         matrix.setMatrixSize(row, col);
 
-        int[][] aMatrix = matrix.createMatrixOfRandomNumbers(matrix);
-        
         matrix.printMatrixSize(matrix);
-        matrix.writeMatrix(aMatrix);
+        //matrix.writeMatrix(matrix);
 
+        createMatrixOfRandomNumbers(matrix);
 
         System.out.println("Enter row, column:");
 
         int rowFind = scn.nextInt();
         int colFind = scn.nextInt();
 
-        int content = matrix.getContentByID(aMatrix, matrix, rowFind, colFind);
+        int content = matrix.getContentByID(matrix, rowFind, colFind);
 
         System.out.println(content);
     }

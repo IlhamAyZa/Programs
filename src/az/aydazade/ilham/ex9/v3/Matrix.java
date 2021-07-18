@@ -4,19 +4,21 @@ public class Matrix {
 
     private int sizeRow;
     private int sizeCol;
+    private int[][] matrix;
 
     public void setMatrixSize(int sizeRow, int sizeCol) {
         this.sizeCol = sizeCol;
         this.sizeRow = sizeRow;
+        int[][] matrix = new int[sizeCol][sizeRow];
     }
 
     public void printMatrixSize(Matrix matrix) {
         System.out.println("Matrix has " + matrix.getSizeRow() + " rows and " + matrix.getSizeCol() + " columns");
     }
 
-    public int[][] createMatrixOfRandomNumbers(Matrix matrix) {
+    public void createMatqrixOfRandomNumbers(Matrix matrix) {
 
-        int[][] aMatrix = new int[matrix.getSizeRow()][matrix.getSizeCol()];
+        int[][] aMatrix = matrix.getMatrix();
 
         for (int i = 0; i < matrix.getSizeRow(); i++) {
 
@@ -25,28 +27,29 @@ public class Matrix {
             }
         }
 
-        return aMatrix;
+        matrix.setMatrix(aMatrix);
+
     }
 
-    public int getContentByID(int[][] aMatrix, Matrix matrix, int sizeRow, int sizeCol) {
+    public int getContentByID(Matrix matrix, int sizeRow, int sizeCol) {
         try {
-            if ((sizeRow > matrix.getSizeRow() - 1) || (sizeCol > matrix.getSizeCol() - 1)) {
+            if ((sizeRow > matrix.getSizeRow()) || (sizeCol > matrix.getSizeCol())) {
                 throw new Exception("Out of bounds. Your row or column is not correct!");
             } else if ((sizeRow <= 0) || (sizeCol <= 0)) {
                 throw new Exception("Out of bounds. Your row or column cannot be zero or negative!");
             } else {
-                return aMatrix[sizeRow - 1][sizeCol - 1];
+                return matrix.getMatrix()[sizeRow - 1][sizeCol - 1];
             }
         } catch (Exception e) {
             return -10000;
         }
     }
 
-    public void writeMatrix(int[][] aMatrix) {
-        for (int i = 0; i < aMatrix.length; i++) {
+    public void writeMatrix(Matrix matrix) {
+        for (int i = 0; i < matrix.getMatrix().length; i++) {
             System.out.print("  | ");
-            for (int j = 0; j < aMatrix[0].length; j++) {
-                System.out.print(aMatrix[i][j] + " ");
+            for (int j = 0; j < matrix.getMatrix()[0].length; j++) {
+                System.out.print(matrix.getMatrix()[i][j] + " ");
             }
             System.out.print(" | \n");
         }
@@ -67,6 +70,14 @@ public class Matrix {
 
     public void setSizeCol(int sizeCol) {
         this.sizeCol = sizeCol;
+    }
+
+    public int[][] getMatrix() {
+        return matrix;
+    }
+
+    public void setMatrix(int[][] matrix) {
+        this.matrix = matrix;
     }
 
 }
