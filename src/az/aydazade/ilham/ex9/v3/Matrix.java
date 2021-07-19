@@ -12,22 +12,22 @@ public class Matrix {
         int[][] matrix = new int[sizeCol][sizeRow];
     }
 
-    public void printMatrixSize(Matrix matrix) {
-        System.out.println("Matrix has " + matrix.getSizeRow() + " rows and " + matrix.getSizeCol() + " columns");
+    public void printMatrixSize() {
+        System.out.println("Matrix has " + matrix + " rows and " + sizeCol + " columns");
     }
 
-    public void createMatqrixOfRandomNumbers(Matrix matrix) {
+    public void createMatqrixOfRandomNumbers() {
 
-        int[][] aMatrix = matrix.getMatrix();
+        int[][] aMatrix = matrix;
 
-        for (int i = 0; i < matrix.getSizeRow(); i++) {
+        for (int i = 0; i < sizeRow; i++) {
 
-            for (int j = 0; j < matrix.getSizeCol(); j++) {
+            for (int j = 0; j < sizeCol; j++) {
                 aMatrix[i][j] = (int) (Math.random() * 100);
             }
         }
 
-        matrix.setMatrix(aMatrix);
+        matrix = aMatrix;
 
     }
 
