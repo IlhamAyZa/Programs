@@ -31,25 +31,25 @@ public class Matrix {
 
     }
 
-    public int getContentByID(Matrix matrix, int sizeRow, int sizeCol) {
+    public int getContentByID(int sizeRow, int sizeCol) throws Exception {
         try {
-            if ((sizeRow > matrix.getSizeRow()) || (sizeCol > matrix.getSizeCol())) {
+            if ((sizeRow > this.sizeRow ) || (sizeCol > this.sizeCol)) {
                 throw new Exception("Out of bounds. Your row or column is not correct!");
             } else if ((sizeRow <= 0) || (sizeCol <= 0)) {
                 throw new Exception("Out of bounds. Your row or column cannot be zero or negative!");
             } else {
-                return matrix.getMatrix()[sizeRow - 1][sizeCol - 1];
+                return this.matrix[sizeRow - 1][sizeCol - 1];
             }
         } catch (Exception e) {
-            return -10000;
+            throw new Exception("Out of bounds");
         }
     }
 
-    public void writeMatrix(Matrix matrix) {
-        for (int i = 0; i < matrix.getMatrix().length; i++) {
+    public void writeMatrix() {
+        for (int i = 0; i < this.matrix.length; i++) {
             System.out.print("  | ");
-            for (int j = 0; j < matrix.getMatrix()[0].length; j++) {
-                System.out.print(matrix.getMatrix()[i][j] + " ");
+            for (int j = 0; j < this.matrix[0].length; j++) {
+                System.out.print(this.matrix[i][j] + " ");
             }
             System.out.print(" | \n");
         }
