@@ -35,66 +35,50 @@ public class Matrix {
 
         if (sizeRow != sizeCol) {
             System.out.println("Your matrix is not square type (Number of Rows = Number of Colunms)");
-        } else {
-
-            int c;
-
-            float determinant = 0, s = 1;
-
+        } 
+        else {
+            float determinant = 0, sign = 1;
             float[][] mtrx = new float[size][size];
-
-            int i, j;
-
-            int m, n;
+            int idx1, idx2, idx3;
+            int num1, num2;
 
             if (size == 1) {
-
                 return (matrix[0][0]);
-
-            } else {
-
+            } 
+            else {
                 determinant = 0;
 
-                for (c = 0; c < size; c++) {
+                for (idx1 = 0; idx1 < size; idx1++) {
+                    num1 = 0;
+                    num2 = 0;
 
-                    m = 0;
+                    for (idx2 = 0; idx2 < size; idx2++) {
 
-                    n = 0;
+                        for (idx3 = 0; idx3 < size; idx3++) {
 
-                    for (i = 0; i < size; i++) {
+                            mtrx[idx2][idx3] = 0;
 
-                        for (j = 0; j < size; j++) {
+                            if (idx2 != 0 && idx3 != idx1) {
 
-                            mtrx[i][j] = 0;
+                                mtrx[num1][num2] = matrix[idx2][idx3];
 
-                            if (i != 0 && j != c) {
-
-                                mtrx[m][n] = matrix[i][j];
-
-                                if (n < (sizeRow - 2)) {
-
-                                    n++;
-
-                                } else {
-
-                                    n = 0;
-
-                                    m++;
+                                if (num2 < (sizeRow - 2)) {
+                                    num2++;
+                                } 
+                                else {
+                                    num2 = 0;
+                                    num1++;
                                 }
                             }
                         }
                     }
-                    determinant = determinant + s * (matrix[0][c] * findDeterminent(size - 1));
-
-                    s = -1 * s;
+                    determinant = determinant + sign * (matrix[0][idx1] * findDeterminent(size - 1));
+                    sign = -1 * sign;
                 }
-
             }
-
             return (determinant);
         }
-        
-        return 0;
+        return 0; // this return is unreachable
     }
 
     public int getContentByID(int sizeRow, int sizeCol) throws Exception {
