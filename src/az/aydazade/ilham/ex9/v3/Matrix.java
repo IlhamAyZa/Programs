@@ -103,7 +103,7 @@ public class Matrix {
                 continue;
             }
             if (index != i) {
-                // loop for swaping the diagonal element row and index row
+                // loop for swaping the element row and index row
                 for (int j = 0; j < sizeRow; j++) {
                     swapping(matrix, index, j, i, j);
                 }
