@@ -4,12 +4,12 @@ public class Matrix {
 
     private int sizeRow;
     private int sizeCol;
-    private int[][] matrix;
+    private double[][] matrix;
 
     public void setMatrixSize(int sizeRow, int sizeCol) {
         this.sizeCol = sizeCol;
         this.sizeRow = sizeRow;
-        int[][] matrix = new int[sizeCol][sizeRow];
+        double[][] matrix = new double[sizeCol][sizeRow];
     }
 
     public void printMatrixSize() {
@@ -18,12 +18,12 @@ public class Matrix {
 
     public void createMatqrixOfRandomNumbers() {
 
-        int[][] aMatrix = matrix;
+        double[][] aMatrix = matrix;
 
         for (int i = 0; i < sizeRow; i++) {
 
             for (int j = 0; j < sizeCol; j++) {
-                aMatrix[i][j] = (int) (Math.random() * 100);
+                aMatrix[i][j] = (double) (Math.random() * 100);
             }
         }
 
@@ -31,21 +31,20 @@ public class Matrix {
 
     }
 
-    public float findDeterminent(int size) {
+    // Recursively
+    public float findDeterminent1(int size) {
 
         if (sizeRow != sizeCol) {
             System.out.println("Your matrix is not square type (Number of Rows = Number of Colunms)");
-        } 
-        else {
+        } else {
             float determinant = 0, sign = 1;
             float[][] mtrx = new float[size][size];
             int idx1, idx2, idx3;
             int num1, num2;
 
             if (size == 1) {
-                return (matrix[0][0]);
-            } 
-            else {
+                return (float) (matrix[0][0]);
+            } else {
                 determinant = 0;
 
                 for (idx1 = 0; idx1 < size; idx1++) {
@@ -60,19 +59,18 @@ public class Matrix {
 
                             if (idx2 != 0 && idx3 != idx1) {
 
-                                mtrx[num1][num2] = matrix[idx2][idx3];
+                                mtrx[num1][num2] = (float) matrix[idx2][idx3];
 
                                 if (num2 < (sizeRow - 2)) {
                                     num2++;
-                                } 
-                                else {
+                                } else {
                                     num2 = 0;
                                     num1++;
                                 }
                             }
                         }
                     }
-                    determinant = determinant + sign * (matrix[0][idx1] * findDeterminent(size - 1));
+                    determinant = (float) (determinant + sign * (matrix[0][idx1] * findDeterminent1(size - 1)));
                     sign = -1 * sign;
                 }
             }
@@ -81,7 +79,62 @@ public class Matrix {
         return 0; // this return is unreachable
     }
 
-    public int getContentByID(int sizeRow, int sizeCol) throws Exception {
+    // Without recursion
+    public double[][] swapping(double[][] matrix, int idx1row, int idx1col, int idx2row, int idx2col) {
+        double temp = matrix[idx1row][idx1col];
+        matrix[idx1row][idx1col] = matrix[idx2row][idx2col];
+        matrix[idx2row][idx2col] = temp;
+        return matrix;
+    }
+    
+    public double determinantOfMatrix(double[][] matrix) {
+        double determinant = 1, total = 1, diagonalValue, verticalValue;
+        int index;
+
+        double[] temporaryRow = new double[sizeRow + 1];
+
+        for (int i = 0; i < sizeRow; i++) {
+            index = i;
+
+            while (matrix[index][i] == 0 && index < sizeRow) {
+                index++;
+            }
+            if (index == sizeRow) {
+                continue;
+            }
+            if (index != i) {
+                // loop for swaping the diagonal element row and index row
+                for (int j = 0; j < sizeRow; j++) {
+                    swapping(matrix, index, j, i, j);
+                }
+
+                determinant = (determinant * Math.pow(-1, index - i));
+            }
+
+            // storing the values of diagonal row elements
+            for (int j = 0; j < sizeRow; j++) {
+                temporaryRow[j] = matrix[i][j];
+            }
+
+            for (int j = i + 1; j < sizeRow; j++) {
+                diagonalValue = temporaryRow[i]; // value of diagonal element
+                verticalValue = matrix[j][i]; // value of next row element
+
+                for (int k = 0; k < sizeRow; k++) {
+                    // make the diagonal element and next row element equal
+                    matrix[j][k] = (diagonalValue * matrix[j][k]) - (verticalValue * temporaryRow[k]);
+                }
+                total = total * diagonalValue; // Det(kA)=kDet(A);
+            }
+        }
+        for (int i = 0; i < sizeRow; i++) {
+            determinant = determinant * matrix[i][i];
+        }
+        return (determinant / total); // Det(kA)/k=Det(A);
+    }
+
+
+    public double getContentByID(int sizeRow, int sizeCol) throws Exception {
         try {
             if ((sizeRow > this.sizeRow) || (sizeCol > this.sizeCol)) {
                 throw new Exception("Out of bounds. Your row or column is not correct!");
@@ -122,11 +175,11 @@ public class Matrix {
         this.sizeCol = sizeCol;
     }
 
-    public int[][] getMatrix() {
+    public double[][] getMatrix() {
         return matrix;
     }
 
-    public void setMatrix(int[][] matrix) {
+    public void setMatrix(double[][] matrix) {
         this.matrix = matrix;
     }
 
