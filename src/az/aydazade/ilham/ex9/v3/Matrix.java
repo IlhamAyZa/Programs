@@ -88,7 +88,7 @@ public class Matrix {
     }
     
     public double determinantOfMatrix(double[][] matrix) {
-        double determinant = 1, total = 1, diagonalValue, verticalValue;
+        double determinant = 1, total = 1, diagonalValue, value;
         int index;
 
         double[] temporaryRow = new double[sizeRow + 1];
@@ -111,18 +111,18 @@ public class Matrix {
                 determinant = (determinant * Math.pow(-1, index - i));
             }
 
-            // storing the values of diagonal row elements
+            // saving values of row elements
             for (int j = 0; j < sizeRow; j++) {
                 temporaryRow[j] = matrix[i][j];
             }
 
             for (int j = i + 1; j < sizeRow; j++) {
-                diagonalValue = temporaryRow[i]; // value of diagonal element
-                verticalValue = matrix[j][i]; // value of next row element
+                diagonalValue = temporaryRow[i]; 
+                value = matrix[j][i]; 
 
                 for (int k = 0; k < sizeRow; k++) {
                     // make the diagonal element and next row element equal
-                    matrix[j][k] = (diagonalValue * matrix[j][k]) - (verticalValue * temporaryRow[k]);
+                    matrix[j][k] = (diagonalValue * matrix[j][k]) - (value * temporaryRow[k]);
                 }
                 total = total * diagonalValue; // Det(kA)=kDet(A);
             }
