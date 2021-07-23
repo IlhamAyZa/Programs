@@ -4,9 +4,9 @@ public class GaussMethod {
 
     public static void main(String[] args) {
 
-        float[][] augmentMatrix = new float[][]{    {2, 3, 5, 1},
-                                                    {1, 4, 6, 2},
-                                                    {3, 7, 1, 8}    };
+        float[][] augmentMatrix = new float[][]{{2, 3, 5, 1},
+        {1, 4, 6, 2},
+        {3, 7, 1, 8}};
 
         int size = 3, flag = 0;
 
@@ -39,8 +39,13 @@ public class GaussMethod {
         for (idx1 = 0; idx1 < size; idx1++) {
             if (matrix[idx1][idx1] == 0) {
                 num = 1;
-                while ((idx1 + num) < size && matrix[idx1 + num][idx1] == 0) {
-                    num++;
+                for (int i = 0; i < size; i++) {
+                    if ((idx1 + num) < size && matrix[idx1 + num][idx1] == 0) {
+                        num++;
+                    }
+                    else{
+                        break;
+                    }
                 }
                 if ((idx1 + num) == size) {
                     flag = 1;
