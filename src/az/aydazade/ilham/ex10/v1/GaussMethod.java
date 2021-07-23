@@ -1,4 +1,4 @@
-package az.aydazade.ilham.ex10;
+package az.aydazade.ilham.ex10.v1;
 
 public class GaussMethod {
 
