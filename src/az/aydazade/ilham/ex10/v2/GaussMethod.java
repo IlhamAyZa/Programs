@@ -69,10 +69,9 @@ public class GaussMethod {
     }
     
     public static void main(String[] args) {
-        double[][] augmentMatrix = new double[][]{{1, 0, 0, 0, 0},
-        {0, 1, 0, 0, 0},
-        {0, 0, 1, 0, 0},
-        {0, 0, 0, 1, 0}};
+        double[][] augmentMatrix = new double[][]{  {2, 3, 5, 1},
+                                                    {1, 4, 6, 2},
+                                                    {3, 7, 1, 8}    };
         
         System.out.println(Gauss(augmentMatrix));
     }

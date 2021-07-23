@@ -4,10 +4,9 @@ public class GaussMethod {
 
     public static void main(String[] args) {
 
-        float[][] augmentMatrix = new float[][]{{1, 0, 0, 0, 0},
-        {0, 1, 0, 0, 0},
-        {0, 0, 1, 0, 0},
-        {0, 0, 0, 1, 0}};
+        float[][] augmentMatrix = new float[][]{    {2, 3, 5, 1},
+                                                    {1, 4, 6, 2},
+                                                    {3, 7, 1, 8}    };
 
         int size = 3, flag = 0;
 
