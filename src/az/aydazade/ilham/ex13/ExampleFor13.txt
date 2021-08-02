@@ -1,0 +1,43 @@
+This is example for training problem #13.
+
+We use writer and reader to change this file and write it into console.
+
+AAAAA
+BBBBB
+CCCCC
+DDDDD
+EEEEE
+FFFFF
+GGGGG
+HHHHH
+IIIII
+JJJJJ
+KKKKK
+LLLLL
+MMMMM
+NNNNN
+OOOOO
+PPPPP
+QQQQQ
+RRRRR
+SSSSS
+TTTTT
+UUUUU
+VVVVV
+WWWWW
+XXXXX
+YYYYY
+ZZZZZ
+11111
+22222
+33333
+44444
+55555
+66666
+77777
+88888
+99999
+00000
+
+Hello World!
+08/02/2021
