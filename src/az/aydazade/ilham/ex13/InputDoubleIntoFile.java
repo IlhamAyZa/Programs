@@ -17,9 +17,9 @@ public class InputDoubleIntoFile {
         System.out.print("");
         
 //        FileOutputStream fileOS = new FileOutputStream(file);
-//        DataOutputStream dataQS = new DataOutputStream(fileOS);
-//        dataQS.writeDouble(input);
-//        dataQS.close();
+//        DataOutputStream dataOS = new DataOutputStream(fileOS);
+//        dataOS.writeDouble(input);
+//        dataOS.close();
 
   
         FileWriter writer = new FileWriter(file);
