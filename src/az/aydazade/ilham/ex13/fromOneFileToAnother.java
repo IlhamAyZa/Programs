@@ -26,8 +26,9 @@ public class fromOneFileToAnother {
         } catch (IOException ex) {
             //Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (fis != null) {
+            if (fis != null && fos != null) {
                 try {
+                    fos.close();
                     fis.close();
                 } catch (Exception e) {
                 }
