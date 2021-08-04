@@ -60,17 +60,40 @@ public class InputDoubleIntoFile {
         }
 
         // Printing file
-        System.out.println("Printing file:");
-        FileReader reader = new FileReader(file);
-        Scanner scn_file = new Scanner(file);
-
-        int i = 1;
-
-        while (scn_file.hasNextLine()) {
-            System.out.println(i + " : " + scn_file.nextLine());
-            i++;
+        FileInputStream fis = null;
+        
+        try {
+            fis = new FileInputStream(file);
+            DataInputStream dit = new DataInputStream(fis);
+            
+            for (int i = 0; i < file.length(); i++){
+                System.out.println(dit.readDouble());
+            }
+            
+        } catch (FileNotFoundException ex) {
+            // Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            //Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (Exception e) {
+                }
+            }
         }
 
-        reader.close();
+//        System.out.println("Printing file:");
+//        FileReader reader = new FileReader(file);
+//        Scanner scn_file = new Scanner(file);
+//
+//        int i = 1;
+//
+//        while (scn_file.hasNextLine()) {
+//            System.out.println(i + " : " + scn_file.nextLine());
+//            i++;
+//        }
+//
+//        reader.close();
     }
 }
