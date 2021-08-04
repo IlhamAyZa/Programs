@@ -9,26 +9,57 @@ public class InputDoubleIntoFile {
 
         File file = new File("fileForEx.txt");
 
-                Scanner scn = new Scanner(System.in);
+        Scanner scn = new Scanner(System.in);
 
-      System.out.print("Enter a number: ");
-      double input = scn.nextDouble();
-//        double input = 1;
+        //System.out.print("Enter a number: ");
+        //double input = scn.nextDouble();
+        double insert = 1;
+        List<Double> numbers = new ArrayList<>();
+        numbers.add(1.0);
+        numbers.add(2.3);
+        numbers.add(3.14);
+        numbers.add(4.08);
+        numbers.add(6.24);
+        numbers.add(7.38);
+
         System.out.print("");
-        
+
 //        FileOutputStream fileOS = new FileOutputStream(file);
 //        DataOutputStream dataOS = new DataOutputStream(fileOS);
 //        dataOS.writeDouble(input);
 //        dataOS.close();
+//        FileWriter writer = new FileWriter(file);
+//            
+//        writer.write(String.valueOf(input));
+//        writer.append('\n');
+//        writer.flush();
+//        writer.close();
+        FileOutputStream fos = null;
 
-  
-        FileWriter writer = new FileWriter(file);
-            
-        writer.write(String.valueOf(input));
-        writer.append('\n');
-        writer.flush();
-        writer.close();
+        try {
+            fos = new FileOutputStream(file);
+            DataOutputStream dot = new DataOutputStream(fos);
 
+            dot.writeDouble(insert);
+
+            for (double num : numbers) {
+                dot.writeDouble(num);
+            }
+
+        } catch (FileNotFoundException ex) {
+            // Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            //Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (Exception e) {
+                }
+            }
+        }
+
+        // Printing file
         System.out.println("Printing file:");
         FileReader reader = new FileReader(file);
         Scanner scn_file = new Scanner(file);
