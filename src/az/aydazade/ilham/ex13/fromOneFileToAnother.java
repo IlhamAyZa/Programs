@@ -22,12 +22,15 @@ public class fromOneFileToAnother {
             }
 
         } catch (FileNotFoundException ex) {
+            System.out.println("TRY #1, Ex #1");
             // Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
+            System.out.println("TRY #1, Ex #2");
             //Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (fis != null && fos != null) {
                 try {
+                    fos.flush();
                     fos.close();
                     fis.close();
                 } catch (Exception e) {
@@ -44,9 +47,11 @@ public class fromOneFileToAnother {
             }
             
         } catch (FileNotFoundException ex) {
+            System.out.println("TRY #2, Ex #1");
             // Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            //Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("TRY #2, Ex #2");
+            // Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (fis != null) {
                 try {
